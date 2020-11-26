@@ -14,6 +14,13 @@ using WishlistAPI.Model;
 
 namespace WishlistAPI.Controllers
 {
+
+    /// <summary>
+    /// Functions planned here:
+    /// Register, Login, EditData, ChangePassword, Delete
+    /// It is breaking the rules of REST, but it is allowed in that case
+    /// </summary>
+
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
