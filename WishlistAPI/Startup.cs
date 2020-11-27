@@ -35,8 +35,10 @@ namespace WishlistAPI
         {
             services.AddDbContext<Context>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<ApplicationUser>(options =>
                 options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<Context>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -55,7 +57,9 @@ namespace WishlistAPI
 
             services.AddApplication();
             services.AddInfrastructure();
+
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WishlistAPI", Version = "v1" });
