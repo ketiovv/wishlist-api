@@ -1,13 +1,15 @@
 version: "3.8"
 services:
     web:
-        build: WishlistAPI/
+        build: .
+        container_name: wishlist_api
         ports:
             - "8000:80"
         depends_on:
             - db
     db:
         image: "mcr.microsoft.com/mssql/server"
+        container_name: sqlserver_db
         environment:
             SA_PASSWORD: "ZAQ!2wsx"
             ACCEPT_EULA: "Y"
