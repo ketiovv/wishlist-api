@@ -5,19 +5,19 @@
 #
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
-EXPOSE 80
+EXPOSE 80/tcp
 
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /app
 
-COPY ["/WishlistAPI/WishlistAPI.csproj", "/WishlistAPI/"]
-COPY ["/WishlistAPI.Application/WishlistAPI.Application.csproj", "/WishlistAPI.Application/"]
-COPY ["/WishlistAPI.Infrastructure/WishlistAPI.Infrastructure.csproj", "/WishlistAPI.Infrastructure/"]
-COPY ["/WishlistAPI.Domain/WishlistAPI.Domain.csproj", "/WishlistAPI.Domain/"]
-RUN dotnet restore "/WishlistAPI/WishlistAPI.csproj"
+COPY ["WishlistAPI/WishlistAPI.csproj", "WishlistAPI/"]
+COPY ["WishlistAPI.Application/WishlistAPI.Application.csproj", "WishlistAPI.Application/"]
+COPY ["WishlistAPI.Infrastructure/WishlistAPI.Infrastructure.csproj", "WishlistAPI.Infrastructure/"]
+COPY ["WishlistAPI.Domain/WishlistAPI.Domain.csproj", "WishlistAPI.Domain/"]
+RUN dotnet restore "WishlistAPI/WishlistAPI.csproj"
 COPY . .
-WORKDIR "/WishlistAPI"
+WORKDIR "/app/WishlistAPI"
 RUN dotnet build "WishlistAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
