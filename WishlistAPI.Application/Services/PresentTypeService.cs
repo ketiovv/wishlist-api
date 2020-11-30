@@ -52,5 +52,14 @@ namespace WishlistAPI.Application.Services
             _context.PresentTypes.Remove(presentType);
             await _context.SaveChangesAsync();
         }
+
+        public async Task UpdatePresentType(UpdatePresentTypeDto updatePresentType)
+        {
+            var existingPresentType =
+                await _context.PresentTypes.FirstOrDefaultAsync(t => t.Id == updatePresentType.Id);
+
+            _mapper.Map(updatePresentType, existingPresentType);
+            await _context.SaveChangesAsync();
+        }
     }
 }
