@@ -19,6 +19,7 @@ namespace WishlistAPI.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddTransient<IPresentService, PresentService>();
             services.AddTransient<IWishlistService, WishlistService>();
+            services.AddTransient<IPresentTypeService, PresentTypeService>();
 
             return services;
         }
