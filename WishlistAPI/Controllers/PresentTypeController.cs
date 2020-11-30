@@ -23,5 +23,12 @@ namespace WishlistAPI.Controllers
         }
 
 
+        [HttpGet]
+        [Description("Get a list of present types")]
+        public async Task<ActionResult<PresentsVm>> Get()
+        {
+            var presentTypes = await _presentTypeService.GetAllPresentTypes();
+            return Ok(presentTypes);
+        }
     }
 }
