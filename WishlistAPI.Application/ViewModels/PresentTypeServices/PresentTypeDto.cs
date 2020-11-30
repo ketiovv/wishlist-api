@@ -8,6 +8,7 @@ namespace WishlistAPI.Application.ViewModels.PresentTypeServices
 {
     public class PresentTypeDto
     {
-
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
