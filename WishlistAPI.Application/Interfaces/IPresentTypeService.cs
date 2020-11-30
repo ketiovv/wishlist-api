@@ -12,6 +12,6 @@ namespace WishlistAPI.Application.Interfaces
         Task<PresentTypesVm> GetAllPresentTypes();
         Task AddNewPresentType(CreatePresentTypeDto newPresentType);
         Task DeletePresentType(int id);
-        //Task UpdatePresentType();
+        Task UpdatePresentType(UpdatePresentTypeDto updatePresentType);
     }
 }
