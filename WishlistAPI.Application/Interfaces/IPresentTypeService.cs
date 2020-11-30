@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WishlistAPI.Application.ViewModels.PresentTypeServices;
 
 namespace WishlistAPI.Application.Interfaces
 {
     public interface IPresentTypeService
     {
+        Task<PresentTypesVm> GetAllPresentTypes();
+        //Task AddNewPresentType();
+        Task DeletePresentType(int id);
+        //Task UpdatePresentType();
     }
 }
