@@ -10,7 +10,7 @@ namespace WishlistAPI.Application.Interfaces
     public interface IPresentTypeService
     {
         Task<PresentTypesVm> GetAllPresentTypes();
-        //Task AddNewPresentType();
+        Task AddNewPresentType(CreatePresentTypeDto newPresentType);
         Task DeletePresentType(int id);
         //Task UpdatePresentType();
     }
