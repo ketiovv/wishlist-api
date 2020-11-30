@@ -12,6 +12,7 @@ namespace WishlistAPI.Domain.Interfaces
     {
         DbSet<Present> Presents { get; set; }
         DbSet<Wishlist> Wishlists { get; set; }
+        DbSet<PresentType> PresentTypes { get; set; }
 
         Task<int> SaveChangesAsync();
     }
