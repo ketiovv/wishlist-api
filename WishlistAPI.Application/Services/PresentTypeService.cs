@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using WishlistAPI.Application.Interfaces;
 using WishlistAPI.Application.ViewModels.PresentTypeServices;
 using WishlistAPI.Domain.Interfaces;
+using WishlistAPI.Domain.Model;
 
 namespace WishlistAPI.Application.Services
 {
@@ -36,6 +37,13 @@ namespace WishlistAPI.Application.Services
                 PresentTypes = presentTypes,
                 Count = presentTypes.Count
             };
+        }
+
+        public async Task AddNewPresentType(CreatePresentTypeDto newPresentType)
+        {
+            var present = _mapper.Map<PresentType>(newPresentType);
+            await _context.PresentTypes.AddAsync(present);
+            await _context.SaveChangesAsync();
         }
 
         public Task DeletePresentType(int id)
