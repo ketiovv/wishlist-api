@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using WishlistAPI.Application.Interfaces;
 using WishlistAPI.Application.ViewModels.PresentTypeServices;
 using WishlistAPI.Domain.Interfaces;
@@ -22,9 +24,18 @@ namespace WishlistAPI.Application.Services
         }
 
 
-        public Task<PresentTypesVm> GetAllPresentTypes()
+        public async Task<PresentTypesVm> GetAllPresentTypes()
         {
-            throw new NotImplementedException();
+            var presentTypes =
+                await _context.PresentTypes
+                    .ProjectTo<PresentTypeDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
+
+            return new PresentTypesVm()
+            {
+                PresentTypes = presentTypes,
+                Count = presentTypes.Count
+            };
         }
 
         public Task DeletePresentType(int id)
