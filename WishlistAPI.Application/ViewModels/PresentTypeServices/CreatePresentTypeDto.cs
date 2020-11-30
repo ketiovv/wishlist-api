@@ -11,6 +11,11 @@ namespace WishlistAPI.Application.ViewModels.PresentTypeServices
 {
     public class CreatePresentTypeDto : IMapFrom<PresentType>
     {
+        public string Name { get; set; }
 
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<CreatePresentTypeDto, PresentType>();
+        }
     }
 }
