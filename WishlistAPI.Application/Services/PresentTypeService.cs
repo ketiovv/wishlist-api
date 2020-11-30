@@ -41,14 +41,16 @@ namespace WishlistAPI.Application.Services
 
         public async Task AddNewPresentType(CreatePresentTypeDto newPresentType)
         {
-            var present = _mapper.Map<PresentType>(newPresentType);
-            await _context.PresentTypes.AddAsync(present);
+            var presentType = _mapper.Map<PresentType>(newPresentType);
+            await _context.PresentTypes.AddAsync(presentType);
             await _context.SaveChangesAsync();
         }
 
-        public Task DeletePresentType(int id)
+        public async Task DeletePresentType(int id)
         {
-            throw new NotImplementedException();
+            var presentType = await _context.PresentTypes.FirstOrDefaultAsync(t => t.Id == id);
+            _context.PresentTypes.Remove(presentType);
+            await _context.SaveChangesAsync();
         }
     }
 }
