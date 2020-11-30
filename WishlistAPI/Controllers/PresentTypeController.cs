@@ -41,10 +41,18 @@ namespace WishlistAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Description("Deletes specyfic item")]
-        public async Task<ActionResult<PresentDto>> Delete(int id)
+        [Description("Deletes specyfic type")]
+        public async Task<ActionResult<PresentTypeDto>> Delete(int id)
         {
             await _presentTypeService.DeletePresentType(id);
+            return NoContent();
+        }
+
+        [HttpPut]
+        [Description("Updates specific type")]
+        public async Task<ActionResult<PresentTypeDto>> Update(UpdatePresentTypeDto updatePresentType)
+        {
+            await _presentTypeService.UpdatePresentType(updatePresentType);
             return NoContent();
         }
     }
