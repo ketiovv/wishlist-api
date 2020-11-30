@@ -26,9 +26,12 @@ namespace WishlistAPI.Application.Services
 
         public async Task<PresentsVm> GetAllPresent()
         {
-            var presents = await _context.Presents.ProjectTo<PresentDto>(_mapper.ConfigurationProvider)
-                .ToListAsync();
-            return new()
+            var presents =
+                await _context.Presents
+                    .ProjectTo<PresentDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
+
+            return new PresentsVm()
             {
                 Presents = presents,
                 Count = presents.Count
@@ -71,7 +74,7 @@ namespace WishlistAPI.Application.Services
                 .Where(p => p.Name.ToLower()
                     .Contains(query.ToLower())).ProjectTo<PresentDto>(_mapper.ConfigurationProvider).ToListAsync();
 
-            return new()
+            return new PresentsVm()
             {
                 Presents = presents,
                 Count = presents.Count
