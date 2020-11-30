@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using WishlistAPI.Application.Mapping;
+using WishlistAPI.Application.ViewModels.Wishlists;
+using WishlistAPI.Domain.Model;
 
 namespace WishlistAPI.Application.ViewModels.PresentTypeServices
 {
-    public class PresentTypeDto
+    public class PresentTypeDto : IMapFrom<PresentType>
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<PresentType, PresentTypeDto>();
+        }
     }
 }
