@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WishlistAPI.Application.Interfaces;
 using WishlistAPI.Application.ViewModels.Presents;
+using WishlistAPI.Application.ViewModels.PresentTypeServices;
 
 namespace WishlistAPI.Controllers
 {
@@ -29,6 +30,14 @@ namespace WishlistAPI.Controllers
         {
             var presentTypes = await _presentTypeService.GetAllPresentTypes();
             return Ok(presentTypes);
+        }
+
+        [HttpPost]
+        [Description("Insert new present type")]
+        public async Task<ActionResult<PresentTypeDto>> Create(CreatePresentTypeDto newPresentType)
+        {
+            await _presentTypeService.AddNewPresentType(newPresentType);
+            return NoContent();
         }
     }
 }
