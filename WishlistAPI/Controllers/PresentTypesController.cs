@@ -14,11 +14,11 @@ namespace WishlistAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class PresentTypeController : ControllerBase
+    public class PresentTypesController : ControllerBase
     {
         private readonly IPresentTypeService _presentTypeService;
 
-        public PresentTypeController(IPresentTypeService presentTypeService)
+        public PresentTypesController(IPresentTypeService presentTypeService)
         {
             _presentTypeService = presentTypeService;
         }

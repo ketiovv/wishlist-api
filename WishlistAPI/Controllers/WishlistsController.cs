@@ -13,11 +13,11 @@ namespace WishlistAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class WishlistController : ControllerBase
+    public class WishlistsController : ControllerBase
     {
         private readonly IWishlistService _wishlistService;
 
-        public WishlistController(IWishlistService wishlistService)
+        public WishlistsController(IWishlistService wishlistService)
         {
             _wishlistService = wishlistService;
         }

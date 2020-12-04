@@ -15,12 +15,12 @@ namespace WishlistAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class PresentController : ControllerBase
+    public class PresentsController : ControllerBase
     {
         private readonly IPresentService _presentService;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public PresentController(IPresentService presentService, UserManager<ApplicationUser> userManager)
+        public PresentsController(IPresentService presentService, UserManager<ApplicationUser> userManager)
         {
             _presentService = presentService;
             _userManager = userManager;
