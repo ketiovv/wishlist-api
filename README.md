@@ -1,4 +1,4 @@
-# wishlist-api
+# Wishlist API
 
 ## Description
 Simple API designed for educational purposes and understanding clean architecture.
